@@ -38,12 +38,23 @@ var template = React.createElement(
 );
 
 var appRoot = document.getElementById("root");
-ReactDOM.render(template, appRoot);
+//ReactDOM.render(template, appRoot);
+
 var user = {
   name: "Bridgit Akinyi",
-  age: 16,
-  location: "Kasarani, Nairobi"
+  age: 16
+  //location: "Kasarani, Nairobi"
 };
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      "p",
+      null,
+      "Location: ",
+      location
+    );
+  }
+}
 /* let userName = "Rhytonne Odhiambo";
 let userAge = 21;
 let userLocation = "Mombasa, Kenya"; */
@@ -62,12 +73,7 @@ var template2 = React.createElement(
     user.age,
     " "
   ),
-  React.createElement(
-    "p",
-    null,
-    "Location: ",
-    user.location
-  )
+  getLocation(user.location)
 );
-//let indexRoot = document.getElementById("root");
-//ReactDOM.render(template2, indexRoot);
+var indexRoot = document.getElementById("root");
+ReactDOM.render(template2, indexRoot);
