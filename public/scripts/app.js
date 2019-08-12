@@ -42,8 +42,8 @@ var appRoot = document.getElementById("root");
 
 var user = {
   name: "Bridgit Akinyi",
-  age: 16
-  //location: "Kasarani, Nairobi"
+  age: 16,
+  location: "Kasarani, Nairobi"
 };
 function getLocation(location) {
   if (location) {
@@ -64,7 +64,7 @@ var template2 = React.createElement(
   React.createElement(
     "h1",
     null,
-    user.name.toUpperCase()
+    user.name ? user.name.toUpperCase() : "anonymous"
   ),
   React.createElement(
     "p",
