@@ -3,7 +3,7 @@ console.log("App js is running smoothly");
 let titleApp = {
   title: "Indecision App",
   subtitle: "Here, you will find more information",
-  itemLIst: ["Item one", "Item two"]
+  itemLIst: ["Item number one", "Item number two"]
 };
 var template = (
   <div>
