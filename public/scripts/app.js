@@ -1,44 +1,116 @@
 "use strict";
 
-//arguements object- this is no longer bound to arrow functions, this will mean that we will not have access to the arguement list
-
-var addition = function addition(a, b) {
-  console.log(arguments);
-  return a + b;
+console.log("App js is running smoothly");
+//JSX - Javascript XML
+var titleApp = {
+  title: "Indecision App",
+  subtitle: "Here, you will find more information",
+  itemLIst: ["Item number one", "Item number two"]
 };
-console.log(addition(55, 1));
-var add = function add(a, b) {
-  return a + b;
-};
-//console.log(arguments);- if this is put it would throw an arrow arguement is not defined
+var template = React.createElement(
+  "div",
+  null,
+  " ",
+  React.createElement(
+    "h1",
+    null,
+    titleApp.title
+  ),
+  React.createElement(
+    "p",
+    null,
+    titleApp.subtitle
+  ),
+  React.createElement(
+    "ol",
+    null,
+    React.createElement(
+      "li",
+      null,
+      titleApp.itemLIst[0]
+    ),
+    React.createElement(
+      "li",
+      null,
+      titleApp.itemLIst[1]
+    )
+  )
+);
 
-console.log(add(55, 24));
-// this keyword is no longer bound with arrow functions
+var appRoot = document.getElementById("root");
+//ReactDOM.render(template, appRoot);
 
 var user = {
-  name: "Rhytonne",
-  cities: ["Mombasa", "Nairobi", "Kisumu"],
-  printName: function printName() {
-    console.log(this.name);
-    console.log(this.cities);
-    // to get away with the error we introduce a constant and assign it to this
-    var that = this; // if we dont want to introduce that constant we can apply the arrow function and still use this, it will give no error
-    this.cities.forEach(function (city) {
-      console.log(that.name + " has liven in " + city);
-    });
-  }
+  name: "Bridgit Akinyi",
+  age: 16,
+  location: "Kasarani, Nairobi"
 };
-user.printName();
-//challenge
-var multiplier = {
-  numbers: [10, 20, 30],
-  multiplyBy: 4,
-  multiply: function multiply() {
-    var _this = this;
-
-    return this.numbers.map(function (number) {
-      return number * _this.multiplyBy;
-    });
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      "p",
+      null,
+      "Location: ",
+      location
+    );
   }
+}
+/* let userName = "Rhytonne Odhiambo";
+let userAge = 21;
+let userLocation = "Mombasa, Kenya"; */
+var template2 = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    user.name ? user.name.toUpperCase() : "anonymous"
+  ),
+  React.createElement(
+    "p",
+    null,
+    "Age:",
+    user.age,
+    " "
+  ),
+  getLocation(user.location)
+);
+var indexRoot = document.getElementById("root");
+//ReactDOM.render(template2, indexRoot);
+var count = 0;
+var addOne = function addOne() {
+  console.log("add one");
 };
-console.log(multiplier.multiply());
+var minusOne = function minusOne() {
+  console.log("minus one ");
+};
+var reset = function reset() {
+  console.log("value reset");
+};
+var templateTwo = React.createElement(
+  "div",
+  null,
+  React.createElement(
+    "h1",
+    null,
+    "Count: ",
+    count
+  ),
+  React.createElement(
+    "button",
+    { onClick: addOne },
+    "+1"
+  ),
+  React.createElement(
+    "button",
+    { onClick: minusOne },
+    "-1"
+  ),
+  React.createElement(
+    "button",
+    { onClick: reset },
+    "RESET"
+  )
+);
+var counting = document.getElementById("root");
+ReactDOM.render(templateTwo, counting);
